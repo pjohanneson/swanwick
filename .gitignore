@@ -1,5 +1,5 @@
 node_modules/
-sass/
+sass/*
 .sass-cache/
 *.css.map
 Gruntfile.js
