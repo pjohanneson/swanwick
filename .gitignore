@@ -1,4 +1,6 @@
 node_modules/
 sass/
+.sass-cache/
+*.css.map
 Gruntfile.js
 package.json
