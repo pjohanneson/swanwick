@@ -21,6 +21,8 @@ blockquote, q {
 	}
 }
 
+@import "headers";
+
 hr {
 	background-color: $color__background-hr;
 	border: 0;

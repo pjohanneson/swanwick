@@ -102,7 +102,10 @@ add_action( 'widgets_init', 'swanwick_widgets_init' );
  * Enqueue scripts and styles.
  */
 function swanwick_scripts() {
-	wp_enqueue_style( 'swanwick-style', get_stylesheet_uri() );
+	wp_enqueue_style( 'swanwick-style', get_stylesheet_uri(), array( 'libre-baskerville' ) );
+
+	// Loads the Google font CSS file.
+	wp_enqueue_style( 'libre-baskerville', 'https://fonts.googleapis.com/css?family=Libre+Baskerville:400,400i,700&amp;subset=latin-ext' );
 
 	wp_enqueue_script( 'swanwick-navigation', get_template_directory_uri() . '/js/navigation.js', array(), '20151215', true );
 

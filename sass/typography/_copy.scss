@@ -1,5 +1,20 @@
 p {
 	margin-bottom: 1.5em;
+	text-align: justify;
+}
+
+#content p:last-of-type::after {
+	content: " ¶";
+	color: #999;
+}
+
+p.site-title {
+	text-align: center;
+	a {
+		color: $color__text-light;
+		font-size: 2em;
+		text-decoration: none;
+	}
 }
 
 dfn, cite, em, i {

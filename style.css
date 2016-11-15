@@ -1,3 +1,4 @@
+@charset "UTF-8";
 /*!
 Theme Name: Swanwick
 Theme URI: http://underscores.me/
@@ -225,17 +226,33 @@ input,
 select,
 textarea {
   color: #111;
-  font-family: serif;
+  font-family: "Libre Baskerville", serif;
   font-size: 20px;
   font-size: 1.25rem;
   line-height: 1.5; }
 
 h1, h2, h3, h4, h5, h6 {
   clear: both;
-  font-family: sans-serif; }
+  font-family: 'Libre Baskerville', serif;
+  font-weight: normal; }
+
+h2 {
+  font-style: italic; }
 
 p {
-  margin-bottom: 1.5em; }
+  margin-bottom: 1.5em;
+  text-align: justify; }
+
+#content p:last-of-type::after {
+  content: " ¶";
+  color: #999; }
+
+p.site-title {
+  text-align: center; }
+  p.site-title a {
+    color: #fff;
+    font-size: 2em;
+    text-decoration: none; }
 
 dfn, cite, em, i {
   font-style: italic; }
@@ -294,6 +311,31 @@ blockquote, q {
   blockquote:before, blockquote:after, q:before, q:after {
     content: ""; }
 
+header#masthead {
+  width: 100%;
+  padding: 0.25em 0;
+  background-color: #234;
+  color: #fff;
+  text-align: center;
+  padding-bottom: 0;
+  box-shadow: 0 0 10px #234; }
+  header#masthead p {
+    margin-bottom: 1em; }
+  header#masthead nav {
+    background-color: #334d66;
+    margin-bottom: 0;
+    padding: 1em;
+    text-align: center; }
+    header#masthead nav div ul li a {
+      color: #fff;
+      padding: 0 0.5em; }
+    header#masthead nav div ul li a:hover {
+      text-decoration: underline; }
+
+.site-description {
+  text-align: center;
+  font-style: italic; }
+
 hr {
   background-color: #ccc;
   border: 0;
@@ -331,9 +373,8 @@ table {
   width: 100%; }
 
 #content {
-  width: 100%;
-  max-width: 960px;
-  margin: auto; }
+  max-width: 40em;
+  margin: 1em auto; }
 
 /*--------------------------------------------------------------
 # Forms
@@ -437,7 +478,8 @@ a {
   clear: both;
   display: block;
   float: left;
-  width: 100%; }
+  width: 100%;
+  text-align: center; }
   .main-navigation ul {
     display: none;
     list-style: none;
