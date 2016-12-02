@@ -17,7 +17,7 @@
 		<div class="site-info">
 			<a href="<?php echo esc_url( __( 'https://wordpress.org/', 'swanwick' ) ); ?>"><?php printf( esc_html__( 'Proudly powered by %s', 'swanwick' ), 'WordPress' ); ?></a>
 			<span class="sep"> | </span>
-			<?php printf( esc_html__( 'Theme: %1$s by %2$s.', 'swanwick' ), 'swanwick', '<a href="http://pat@patj.ca" rel="designer">Patrick Johanneson</a>' ); ?>
+			<?php printf( esc_html__( 'Theme: %1$s by %2$s.', 'swanwick' ), 'swanwick', '<a href="https://patj.ca/wp/" rel="designer">Patrick Johanneson</a>' ); ?>
 		</div><!-- .site-info -->
 	</footer><!-- #colophon -->
 </div><!-- #page -->

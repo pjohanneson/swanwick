@@ -3,11 +3,6 @@ p {
 	text-align: justify;
 }
 
-#content p:last-of-type::after {
-	content: " ¶";
-	color: #999;
-}
-
 p.site-title {
 	text-align: center;
 	a {

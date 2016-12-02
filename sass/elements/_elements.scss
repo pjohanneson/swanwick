@@ -39,3 +39,20 @@ img {
 
 @import "tables";
 @import "content";
+
+footer {
+	background-color: $color__background-dark;
+	color: #fff;
+	text-align: center;
+	padding: 1em;
+
+	a {
+		color: #abc;
+		&:hover {
+			color: #cde;
+		}
+		&:visited {
+			color: #acf;
+		}
+	}
+}
