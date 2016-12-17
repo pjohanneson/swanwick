@@ -363,6 +363,12 @@ dt {
 dd {
   margin: 0 1.5em 1.5em; }
 
+ul.pj-recent-posts {
+  margin-left: 0;
+  list-style: none; }
+  ul.pj-recent-posts li {
+    margin-bottom: 0.5em; }
+
 img {
   height: auto;
   /* Make sure images are scaled correctly. */
