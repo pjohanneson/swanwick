@@ -105,6 +105,8 @@ class PJ_Recent_Posts extends WP_Widget {
 		// Reset the global $the_post as this query will have stomped on it
 		wp_reset_postdata();
 
+		echo '<p><a href="' . get_permalink( get_option( 'page_for_posts' ) ) . '">All posts</a></p>';
+
 		endif;
 	}
 
