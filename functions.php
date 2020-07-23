@@ -146,3 +146,31 @@ require get_template_directory() . '/inc/jetpack.php';
  * Loads the extended Recent Posts widget.
  */
 require get_template_directory() . '/inc/class-pj-recent-posts.php';
+
+/**
+ * Adds the "Get a print!" tag to the end of the content.
+ *
+ * Checks first to see if "print" and ("order" or "get" or "interested")
+ * are in the content first. If not, adds the contact link to the end.
+ *
+ * @param  string $content The post content.
+ * @return string          The filtered content.
+ */
+function pj_hey_get_a_print_already( $content ) {
+	if ( is_single() && has_category( 'Photos' ) ) {
+		$already_there =
+			// Searches for "print[s]".
+			stripos( $content, 'print' )
+			&& (
+				// Searches for "buy[ing]" OR "interested in".
+				stripos( $content, 'buy' )
+				|| stripos( $content, 'interested in' )
+			);
+		if ( false === $already_there ) {
+			$content .= '<p>' . __( 'Interested in prints of my photos? <a href="/contact">Let me know</a>, and we can work something out.', 'swanwick' ) . '</p>' . PHP_EOL;
+		}
+
+	}
+	return $content;
+}
+add_filter( 'the_content', 'pj_hey_get_a_print_already' );
