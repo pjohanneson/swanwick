@@ -174,3 +174,86 @@ function pj_hey_get_a_print_already( $content ) {
 	return $content;
 }
 add_filter( 'the_content', 'pj_hey_get_a_print_already' );
+
+/**
+ * Filters the archive title.
+ *
+ * @param  string $title          The archive page title.
+ * @param  string $original_title The original title.
+ * @param  string $prefix         The title's prefix.
+ * @return string                 The filtered title.
+ * @since  1.0.0
+ */
+function swanwick_archive_title( $title, $original_title = '', $prefix = '' ) {
+	if ( ! empty( $original_title ) ) {
+		return $original_title;
+	}
+	$title = str_replace( 'Category: ', '', $title );
+	return $title;
+}
+add_filter( 'get_the_archive_title', 'swanwick_archive_title', 10, 3 );
+
+/**
+ * Fakes a featured image, if necessary.
+ *
+ * If a post doesn't have a featured image, but has an image attached,
+ * uses the first attached image as a featured image. Meant for archive
+ * pages, but not single pages.
+ *
+ * @param  boolean          $has_thumbnail The post has a featured image.
+ * @param  int|WP_Post|null $post          The current post.
+ * @param  int|string       $thumbnail_id  The thumbnail ID, if any.
+ * @return boolean                         True if an image is found, false otherwise.
+ * @since  1.0.0
+ */
+function swanwick_find_featured_image( $has_thumbnail, $post, $thumbnail_id ) {
+	if ( ! $has_thumbnail ) {
+		$post = get_post( $post );
+		if ( $post instanceof WP_Post ) {
+			$has_thumbnail = strpos( $post->post_content, '<img' );
+			if ( false !== $has_thumbnail ) {
+				$has_thumbnail = true;
+			}
+		}
+	}
+	return $has_thumbnail;
+}
+add_filter( 'has_post_thumbnail', 'swanwick_find_featured_image', 10, 3 );
+
+/**
+ * Gets the first image as a featured image, if necessary.
+ *
+ * @return string The generated HTML.
+ * @since  1.0.0
+ */
+function swanwick_fake_featured_image( $html, $post_id, $thumbnail_id, $size, $attr ) {
+	if ( is_single() ) {
+		return $html;
+	}
+	if ( empty( $html ) ) {
+		// Shortcut this using post meta, for speed.
+		$thumbnail_id = get_post_meta( $post_id, 'swanwick_fake_thumbnail_id', true );
+		if ( empty( $thumbnail_id ) ) {
+			// Guess we're doing this.
+			$content = get_the_content( null, false, $post_id );
+			$regex = '/<!-- wp:(image|gallery) {"ids?":\[?(\d+),/';
+			preg_match( $regex, $content, $matches );
+			if ( ! empty( $matches ) ) {
+				$t_id = array_pop( $matches );
+				if ( is_numeric( $t_id ) ) {
+					$att = get_post( $t_id );
+					if ( false !== strpos( $att->post_mime_type, 'image' ) ) {
+						$thumbnail_id = $t_id;
+						// Save it in post meta, too.
+						update_post_meta( $post_id, 'swanwick_fake_thumbnail_id', $thumbnail_id );
+					}
+				}
+			}
+		}
+
+		$html = wp_get_attachment_image( $thumbnail_id, $size, false, $attr );
+	}
+
+	return $html;
+}
+add_filter( 'post_thumbnail_html', 'swanwick_fake_featured_image', 10, 5 );
