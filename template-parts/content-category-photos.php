@@ -29,7 +29,9 @@
 	<div class="entry-content">
 		<?php
 			if ( has_post_thumbnail() ) {
+				echo '<a href="' . get_the_permalink( $post->ID ) . '">';
 				the_post_thumbnail();
+				echo '</a>';
 			}
 			$excerpt = get_the_excerpt();
 			if ( empty( $excerpt ) ) {
