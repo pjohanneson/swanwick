@@ -36,6 +36,8 @@
 				$excerpt = wp_trim_words( $post->post_content, 25 );
 			}
 			echo wpautop( $excerpt );
+			// Link to the post.
+			echo '<p class="the-permalink the-permalink-' . $post->ID . '"><a href="' . get_the_permalink( $post->ID ) . '">' . esc_html__( 'Read more', 'swanwick' ) . ' &raquo;</a></p>';
 
 			wp_link_pages( array(
 				'before' => '<div class="page-links">' . esc_html__( 'Pages:', 'swanwick' ),
