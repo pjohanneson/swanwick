@@ -167,7 +167,7 @@ function pj_hey_get_a_print_already( $content ) {
 				|| stripos( $content, 'interested in' )
 			);
 		if ( false === $already_there ) {
-			$content .= '<p>' . __( 'Interested in prints of my photos? <a href="/contact">Let me know</a>, and we can work something out.', 'swanwick' ) . '</p>' . PHP_EOL;
+			$content .= '<p class="call-to-action photo-prints">' . __( 'Interested in prints of my photos? <a href="/contact">Let me know</a>, and we can work something out.', 'swanwick' ) . '</p>' . PHP_EOL;
 		}
 
 	}

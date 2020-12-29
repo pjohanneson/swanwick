@@ -2,7 +2,7 @@
 Theme Name: Swanwick
 Theme URI: http://underscores.me/
 Author: Patrick Johanneson
-Author URI: http://pat@patj.ca
+Author URI: http://patrickjohanneson.com/
 Description: Authorial theme based on Swanwick
 Version: 1.0.0
 License: GNU General Public License v2 or later
@@ -397,6 +397,16 @@ footer {
       color: #cde; }
     footer a:visited {
       color: #acf; }
+
+p.photo-prints {
+  font-size: 85%;
+  font-style: italic;
+  padding: 1em 2em;
+  background: #def;
+  border-top: 1px solid #abc;
+  border-bottom-left-radius: 0.25em;
+  border-bottom-right-radius: 0.25em;
+}
 
 /*--------------------------------------------------------------
 # Forms
