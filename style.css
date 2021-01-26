@@ -773,7 +773,7 @@ object {
 .gallery-caption {
   display: block; }
 
-.blocks-gallery-caption {
+figcaption, .blocks-gallery-caption {
 	text-align: center;
 	padding: 0.5em;
 	margin-bottom: 2.5em;
