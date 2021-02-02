@@ -331,7 +331,7 @@ nav#site-navigation {
  position: sticky;
  top: 0;
  background-color: #334d66;
- margin-bottom: 0;
+ margin-bottom: 2em;
  padding: 1em;
  text-align: center; }
  nav#site-navigation div ul li a {
