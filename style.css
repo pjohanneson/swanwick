@@ -325,16 +325,23 @@ header#masthead {
   box-shadow: 0 0 10px #234; }
   header#masthead p {
     margin-bottom: 1em; }
-  header#masthead nav {
-    background-color: #334d66;
-    margin-bottom: 0;
-    padding: 1em;
-    text-align: center; }
-    header#masthead nav div ul li a {
-      color: #fff;
-      padding: 0 0.5em; }
-    header#masthead nav div ul li a:hover {
-      text-decoration: underline; }
+
+
+nav#site-navigation {
+ position: sticky;
+ top: 0;
+ background-color: #334d66;
+ margin-bottom: 0;
+ padding: 1em;
+ text-align: center; }
+ nav#site-navigation div ul li a {
+  color: #fff;
+  padding: 0 0.5em; }
+ nav#site-navigation div ul li a:hover {
+  text-decoration: underline; }
+body.admin-bar nav#site-navigation {
+  top: 28px;
+}
 
 .site-description {
   text-align: center;
@@ -786,6 +793,10 @@ figcaption, .blocks-gallery-caption {
  */
 @media only screen and (max-width: 800px) {
   main {
-    margin: 0 1em; } }
+    margin: 0 1em; }
+  body.admin-bar nav#site-navigation {
+   top: 0;
+  }
+}
 
 /*# sourceMappingURL=style.css.map */
