@@ -61,7 +61,11 @@ function swanwick_setup() {
 			if ( ! empty( $full_size ) ) {
 				$url = esc_url( $full_size[0] );
 				if ( ! empty( $url ) ) {
-					$html = '<a href="' . $url . '" title="Full Size">' . $html . '</a>';
+					$caption = wp_get_attachment_caption( $featured_image_id );
+					if ( empty( $caption ) ) {
+						$caption = esc_html__( 'Full size', 'swanwick' );
+					}
+					$html = '<figure><a href="' . $url . '" title="' . $caption . '">' . $html . '</a></figure>';
 				}
 			}
 		}
