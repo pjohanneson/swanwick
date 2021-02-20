@@ -42,6 +42,33 @@ function swanwick_setup() {
 	 */
 	add_theme_support( 'post-thumbnails' );
 
+	/**
+	 * Linkifies the featured image.
+	 *
+	 * @param  string       $html              The HTML for the image.
+	 * @param  int          $post_id           The current post ID.
+	 * @param  int          $featured_image_id The featured image ID.
+	 * @param  string|int[] $size              Requested image size; can be a
+	 *                                         registered image size
+	 *                                         or an int array(w,h).
+	 * @param  string       $attr              Query string of attributes.
+	 * @return string                          The filtered HTML.
+	 * @since  1.1.0
+	 */
+	function swanwick_linkify_featured_image( $html, $post_id, $featured_image_id, $size, $attr ) {
+		if ( is_singular() ) {
+			$full_size = wp_get_attachment_image_src( $featured_image_id, 'full' );
+			if ( ! empty( $full_size ) ) {
+				$url = esc_url( $full_size[0] );
+				if ( ! empty( $url ) ) {
+					$html = '<a href="' . $url . '" title="Full Size">' . $html . '</a>';
+				}
+			}
+		}
+		return $html;
+	}
+	add_filter( 'post_thumbnail_html', 'swanwick_linkify_featured_image', 10, 5 );
+
 	// This theme uses wp_nav_menu() in one location.
 	register_nav_menus( array(
 		'primary' => esc_html__( 'Primary', 'swanwick' ),
