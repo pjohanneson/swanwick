@@ -298,7 +298,7 @@ add_filter( 'post_thumbnail_html', 'swanwick_fake_featured_image', 10, 5 );
  * @todo   Set an option, and get the image URL from the option.
  */
 function swanwick_og_image_filter( $image ) {
-	if ( is_category( 'photos' ) ) {
+	if ( is_category( 'jj' ) ) {
 		$image = 'https://patrickjohanneson.com/wp-content/uploads/2017/01/DSCF2792.jpg';
 	}
 	return $image;
