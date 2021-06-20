@@ -288,3 +288,19 @@ function swanwick_fake_featured_image( $html, $post_id, $thumbnail_id, $size, $a
 	return $html;
 }
 add_filter( 'post_thumbnail_html', 'swanwick_fake_featured_image', 10, 5 );
+
+/**
+ * Filters the twitter:image for the Twitter cards. Probably other social media too.
+ *
+ * @param  string $image Image URL.
+ * @return string        Filtered image URL.
+ * @since  1.1.0
+ * @todo   Set an option, and get the image URL from the option.
+ */
+function swanwick_og_image_filter( $image ) {
+	if ( is_category( 'photos' ) ) {
+		$image = 'https://patrickjohanneson.com/wp-content/uploads/2017/01/DSCF2792.jpg';
+	}
+	return $image;
+}
+add_filter( 'fb_og_image', 'swanwick_og_image_filter' );
