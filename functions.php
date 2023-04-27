@@ -56,7 +56,7 @@ function swanwick_setup() {
 	 * @since  1.1.0
 	 */
 	function swanwick_linkify_featured_image( $html, $post_id, $featured_image_id, $size, $attr ) {
-		if ( is_singular() ) {
+		if ( is_singular() && ! is_front_page() ) {
 			$full_size = wp_get_attachment_image_src( $featured_image_id, 'full' );
 			if ( ! empty( $full_size ) ) {
 				$url = esc_url( $full_size[0] );
